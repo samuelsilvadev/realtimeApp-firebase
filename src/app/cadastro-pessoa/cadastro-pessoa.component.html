@@ -1,0 +1,24 @@
+
+<div class="card">
+  <div class="row">
+  <form class="col s12" #f="ngForm" (ngSubmit)="salvar(f)">
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="txtNome">Nome</label>
+        <input id="txtNome" type="text" name="nome" ngModel required>
+      </div>
+      <div class="input-field col s12">
+        <label for="txtSobrenome">Sobre</label>
+        <input id="txtSobrenome" type="text" name="sobreNome" ngModel required>      
+      </div>
+      <button class="btn">Salvar</button>
+    </div>
+  </form>
+  </div>
+</div>
+
+<div style="{{ displayList }}">
+<ul class="collection">
+  <li class="collection-item" *ngFor="let p of pessoas">{{ p.nome }}</li>
+</ul>
+</div>
