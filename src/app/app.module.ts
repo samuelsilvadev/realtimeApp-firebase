@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
 
+import { FireBaseConfig } from './../environments/firebase.config';
+import { AngularFireModule } from 'angularfire2/index';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,8 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(FireBaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
