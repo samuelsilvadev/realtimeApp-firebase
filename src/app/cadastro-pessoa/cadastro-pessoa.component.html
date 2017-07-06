@@ -2,8 +2,7 @@
 <h4>Cadastro de Pessoas</h4>
 
 <div class="section">
-  <div class="">
-    <div class="row">
+  <div class="row">
     <form class="col s12" #f="ngForm" (ngSubmit)="salvar(f)">
       <div class="row">
         <div class="input-field col s12">
@@ -19,14 +18,25 @@
           <input id="txtContato" type="text" name="contato" ngModel>
         </div>
         <button class="btn">Salvar</button>
+        <button class="btn" type="reset">Limpar</button>
       </div>
     </form>
-    </div>
-  </div>
+  </div>  
 </div>
 
-<div style="{{ displayList }}">
-<ul class="collection">
-  <li class="collection-item" *ngFor="let p of pessoas">{{ p.nome }}</li>
-</ul>
-</div>
+<table style="{{ displayList }}">
+  <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Contato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pessoas">
+      <td>{{ p.nome }}</td>
+      <td>{{ p.sobrenome }}</td>
+      <td>{{ p.contato }}</td>
+    </tr>
+  </tbody>
+</table>

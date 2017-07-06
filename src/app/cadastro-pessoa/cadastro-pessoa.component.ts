@@ -21,7 +21,12 @@ export class CadastroPessoaComponent implements OnInit {
   salvar(form: NgForm){
     this.displayList = "display:block";
     if(this.pessoas.indexOf(form.form.controls.nome.value) === -1){
-      this.pessoas.push({nome:form.form.controls.nome.value, sobrenome:form.form.controls.sobreNome.value});
+      this.pessoas.push(
+        {
+          nome: form.form.controls.nome.value, 
+          sobrenome: form.form.controls.sobreNome.value, 
+          contato: form.form.controls.contato.value
+        });
       console.log(this.pessoas);
     }
   }
