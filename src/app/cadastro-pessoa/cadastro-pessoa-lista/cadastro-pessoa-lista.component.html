@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of pessoas">
+    <tr *ngFor="let p of pessoas | async">
       <td>{{ p.nome }}</td>
       <td>{{ p.sobrenome }}</td>
       <td>{{ p.contato }}</td>
