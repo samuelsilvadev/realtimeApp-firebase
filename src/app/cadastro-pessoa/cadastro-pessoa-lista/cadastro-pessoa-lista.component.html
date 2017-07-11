@@ -1,3 +1,16 @@
-<p>
-  cadastro-pessoa-lista works!
-</p>
+<table style="{{ displayList }}" class="responsive-table">
+  <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Contato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pessoas">
+      <td>{{ p.nome }}</td>
+      <td>{{ p.sobrenome }}</td>
+      <td>{{ p.contato }}</td>
+    </tr>
+  </tbody>
+</table>

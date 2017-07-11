@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroPessoaListaComponent implements OnInit {
 
+  pessoas: Array<any>;
+  displayList: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.pessoas = new Array<any>();
+    this.displayList = "display:none";
   }
 
 }
