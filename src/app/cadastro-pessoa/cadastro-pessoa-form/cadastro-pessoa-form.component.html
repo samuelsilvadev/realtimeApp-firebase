@@ -1,3 +1,41 @@
-<p>
-  cadastro-pessoa-form works!
-</p>
+<h4>Cadastro de Pessoas</h4>
+
+<div class="section">
+  <div class="row">
+    <form class="col s12" #f="ngForm" (ngSubmit)="salvar(f)">
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="txtNome">Nome</label>
+          <input id="txtNome" type="text" name="nome" ngModel required>
+        </div>
+        <div class="input-field col s12">
+          <label for="txtSobrenome">Sobrenome</label>
+          <input id="txtSobrenome" type="text" name="sobreNome" ngModel required>      
+        </div>
+        <div class="input-field col s12">
+          <label for="txtContato">Contato</label>
+          <input id="txtContato" type="text" name="contato" ngModel>
+        </div>
+        <button class="btn">Salvar</button>
+        <button class="btn" type="reset">Limpar</button>
+      </div>
+    </form>
+  </div>  
+</div>
+
+<table style="{{ displayList }}" class="responsive-table">
+  <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Contato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pessoas">
+      <td>{{ p.nome }}</td>
+      <td>{{ p.sobrenome }}</td>
+      <td>{{ p.contato }}</td>
+    </tr>
+  </tbody>
+</table>
