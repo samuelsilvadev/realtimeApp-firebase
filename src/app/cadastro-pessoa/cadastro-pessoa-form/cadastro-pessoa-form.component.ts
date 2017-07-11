@@ -17,12 +17,13 @@ export class CadastroPessoaFormComponent implements OnInit {
 
   salvar(f: NgForm){
     //this.displayList = "display:block";
-    this.angularFire.list("pessoas").push({
+    this.angularFire.list("pessoas")
+    .push({
       nome: f.controls.nome.value,
       sobrenome: f.controls.sobreNome.value,
       contato: f.controls.contato.value
     }).then((t: any) => console.log('dados gravados: ' + t.key)),
-    (e: any) => console.log(e.message);
+            (e: any) => console.log(e.message);
 
       this.limparCampos(f);      
     }
