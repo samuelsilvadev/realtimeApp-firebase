@@ -1,6 +1,8 @@
 import { FormsModule, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
   selector: 'app-cadastro-pessoa-form',
   templateUrl: './cadastro-pessoa-form.component.html',
@@ -8,19 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroPessoaFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private angularFire: AngularFireDatabase) { }
 
   ngOnInit() {
   }
 
-  salvar(form: NgForm){
+  salvar(f: NgForm){
     //this.displayList = "display:block";
-    // if(this.pessoas.indexOf(form.form.controls.nome.value) === -1){
-    //   this.pessoas.push({
-    //       nome: form.form.controls.nome.value, 
-    //       sobrenome: form.form.controls.sobreNome.value, 
-    //       contato: form.form.controls.contato.value
-    //   });
-    // }
-  }
+    this.angularFire.list("pessoas").push({
+      nome: f.controls.nome.value,
+      sobrenome: f.controls.sobreNome.value,
+      contato: f.controls.contato.value
+    }).then((t: any) => console.log('dados gravados: ' + t.key)),
+    (e: any) => console.log(e.message);
+
+      this.limparCampos(f);      
+    }
+
+    limparCampos(f: NgForm){
+      f.controls.nome.setValue('');
+      f.controls.sobreNome.setValue('');
+      f.controls.contato.setValue('');
+    }
+
 }
