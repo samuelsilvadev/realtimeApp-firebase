@@ -12,26 +12,31 @@ export class CadastroPessoaFormComponent implements OnInit {
 
   constructor(private angularFire: AngularFireDatabase) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   salvar(f: NgForm){
-    //this.displayList = "display:block";
-    this.angularFire.list("pessoas")
-    .push({
+  
+    this._getListaPessoas()
+      .push(this._preparaObjeto(f))
+      .then((t: any) => console.log('dados gravados: ' + t.key)), (e: any) => console.log(e.message);
+    this._limparCampos(f);
+  }
+
+  _preparaObjeto(f: NgForm){
+    return {
       nome: f.controls.nome.value,
       sobrenome: f.controls.sobreNome.value,
       contato: f.controls.contato.value
-    }).then((t: any) => console.log('dados gravados: ' + t.key)),
-            (e: any) => console.log(e.message);
-
-      this.limparCampos(f);      
     }
+  }
 
-    limparCampos(f: NgForm){
-      f.controls.nome.setValue('');
-      f.controls.sobreNome.setValue('');
-      f.controls.contato.setValue('');
-    }
+  _limparCampos(f: NgForm){
+    f.controls.nome.setValue('');
+    f.controls.sobreNome.setValue('');
+    f.controls.contato.setValue('');
+  }
 
+  _getListaPessoas(){
+    return this.angularFire.list("pessoas");
+  }
 }
